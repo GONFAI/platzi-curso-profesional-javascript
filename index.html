@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Curso Profesional Java Script</title>
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="./node_modules/accepts/index.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Platzi Media Player</h1>
+      <p>Desarrollado por: Gonfai</p>
+    </header>
+
+    <main class="container">
+      <iframe
+        width="700"
+        height="450"
+        src="https://www.youtube.com/embed/MIw4PGUuwZM"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <br>
+      <br>
+      <center><button>Play/Pause</button></center>
+    </main>
+
+    <script>
+      function MediaPlayer(config) {
+        this.media = config.el;
+      }
+
+      MediaPlayer.prototype.play = function () {
+        this.media.play();
+      };
+
+      MediaPlayer.prototype.pause = function () {
+        this.media.pause();
+      };
+
+      MediaPlayer.prototype.togglePlay = function () {
+        if (this.media.paused) {
+          this.play();
+        } else {
+          this.pause();
+        }
+      };
+
+      const video = document.querySelector("video");
+      const player = new MediaPlayer({ el: video });
+
+      const button = document.querySelector("button");
+      button.onclick = () => player.togglePlay();
+    </script>
+  </body>
+</html>
